@@ -1,0 +1,2208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Madu Odeng Asli — Kemurnian dari Alam Liar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --honey: #FFB000;
+      --honey-light: #FFD54F;
+      --honey-dark: #E6A200;
+      --brown-dark: #3E2723;
+      --brown-medium: #5D4037;
+      --brown-light: #8D6E63;
+      --white: #FFFFFF;
+      --off-white: #FFFDF7;
+      --cream: #FFF8E1;
+      --cream-dark: #FFECB3;
+      --shadow-soft: 0 4px 24px rgba(62, 39, 35, 0.08);
+      --shadow-medium: 0 8px 32px rgba(62, 39, 35, 0.12);
+      --shadow-glow: 0 0 40px rgba(255, 176, 0, 0.35);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--brown-dark);
+      background-color: var(--off-white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.15;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ============================================
+       HONEYCOMB BACKGROUND PATTERN
+       Ubah opacity di sini untuk mengatur
+       transparansi pola sarang lebah
+       ============================================ */
+    .honeycomb-bg {
+      position: relative;
+    }
+
+    .honeycomb-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='%23FFB000' stroke-width='0.8'/%3E%3Cpath d='M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34' fill='none' stroke='%23FFB000' stroke-width='0.5'/%3E%3C/svg%3E");
+      background-size: 56px 100px;
+      /* ============================================
+         TRANSPARANSI HONEYCOMB
+         Ubah nilai opacity (0.03 - 0.15) untuk
+         mengatur seberapa terlihat pola sarang lebah
+         ============================================ */
+      opacity: 0.06;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ============================================
+       UTILITY CLASSES
+       ============================================ */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--honey-dark);
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 700;
+      color: var(--brown-dark);
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--brown-medium);
+      max-width: 640px;
+      line-height: 1.75;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ============================================
+       BUTTONS
+       ============================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.5s, height 0.5s;
+    }
+
+    .btn:hover::after {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn-primary {
+      background: var(--honey);
+      color: var(--brown-dark);
+      box-shadow: 0 4px 20px rgba(255, 176, 0, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: var(--honey-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 176, 0, 0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--honey-dark);
+      border: 2px solid var(--honey);
+    }
+
+    .btn-outline:hover {
+      background: var(--honey);
+      color: var(--brown-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-wa {
+      background: #25D366;
+      color: #fff;
+      font-size: 1.05rem;
+      padding: 16px 40px;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    }
+
+    .btn-wa:hover {
+      background: #1fb855;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+    }
+
+    .btn-maps {
+      background: var(--brown-dark);
+      color: var(--white);
+      padding: 12px 28px;
+      box-shadow: 0 4px 16px rgba(62, 39, 35, 0.25);
+    }
+
+    .btn-maps:hover {
+      background: var(--brown-medium);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(62, 39, 35, 0.3);
+    }
+
+    /* ============================================
+       NAVIGATION
+       ============================================ */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 253, 247, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 176, 0, 0.1);
+      transition: box-shadow 0.3s;
+    }
+
+    .navbar.scrolled {
+      box-shadow: var(--shadow-soft);
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--brown-dark);
+    }
+
+    .navbar-brand span {
+      color: var(--honey-dark);
+    }
+
+    .navbar-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .navbar-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--brown-medium);
+      transition: color 0.25s;
+      position: relative;
+    }
+
+    .navbar-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--honey);
+      transition: width 0.3s;
+    }
+
+    .navbar-links a:hover {
+      color: var(--brown-dark);
+    }
+
+    .navbar-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: none;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--brown-dark);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 253, 247, 0.98);
+      backdrop-filter: blur(16px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--brown-dark);
+      transition: color 0.25s;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--honey-dark);
+    }
+
+    .mobile-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: var(--brown-dark);
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-links {
+        display: none;
+      }
+      .nav-cta {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* ============================================
+       HERO SECTION
+       ============================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(to top, var(--off-white), transparent);
+      z-index: 2;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      padding-right: 20px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--cream);
+      border: 1px solid rgba(255, 176, 0, 0.25);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--honey-dark);
+      margin-bottom: 24px;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--honey);
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+      font-weight: 800;
+      color: var(--brown-dark);
+      margin-bottom: 20px;
+      line-height: 1.08;
+    }
+
+    .hero-title span {
+      color: var(--honey-dark);
+      position: relative;
+    }
+
+    .hero-title span::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 176, 0, 0.25);
+      border-radius: 3px;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--brown-medium);
+      line-height: 1.75;
+      margin-bottom: 32px;
+      max-width: 520px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 176, 0, 0.15);
+    }
+
+    .hero-stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--honey-dark);
+    }
+
+    .hero-stat-label {
+      font-size: 0.78rem;
+      color: var(--brown-light);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    /* ---- Droplet Shape Frame ---- */
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .droplet-frame {
+      position: relative;
+      width: 380px;
+      height: 460px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .droplet-shape {
+      position: absolute;
+      inset: 0;
+      /* Honey Droplet SVG Shape */
+      clip-path: path('M190 0 C190 0, 340 160, 340 280 C340 370, 275 460, 190 460 C105 460, 40 370, 40 280 C40 160, 190 0, 190 0Z');
+      background: linear-gradient(145deg, var(--cream) 0%, var(--cream-dark) 100%);
+      border: none;
+      z-index: 0;
+    }
+
+    .droplet-glow {
+      position: absolute;
+      inset: -20px;
+      clip-path: path('M190 0 C190 0, 340 160, 340 280 C340 370, 275 460, 190 460 C105 460, 40 370, 40 280 C40 160, 190 0, 190 0Z');
+      background: radial-gradient(ellipse at center, rgba(255, 176, 0, 0.2), transparent 70%);
+      z-index: -1;
+      animation: glow-pulse 3s ease-in-out infinite;
+    }
+
+    /* ============================================
+       GLOW/SHINE EFFECT ON PRODUCT IMAGE
+       Efek kilauan pada gambar produk madu
+       ============================================ */
+    @keyframes glow-pulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.03); }
+    }
+
+    .droplet-image-wrapper {
+      position: relative;
+      z-index: 1;
+      width: 300px;
+      height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    .droplet-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Shine sweep effect on product */
+    .droplet-image-wrapper::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.3) 45%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0.3) 55%,
+        transparent 60%
+      );
+      /* ============================================
+         KECEPATAN KILAPAN SHINE EFFECT
+         Ubah durasi (4s) untuk mempercepat/memperlambat
+         ============================================ */
+      animation: shine-sweep 4s ease-in-out infinite;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    @keyframes shine-sweep {
+      0% { transform: translateX(-60%) translateY(-60%) rotate(45deg); }
+      100% { transform: translateX(60%) translateY(60%) rotate(45deg); }
+    }
+
+    /* Ring decoration behind droplet */
+    .hero-ring {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border: 1px solid rgba(255, 176, 0, 0.12);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+
+    .hero-ring:nth-child(2) {
+      width: 520px;
+      height: 520px;
+      border-color: rgba(255, 176, 0, 0.07);
+    }
+
+    /* ============================================
+       BEE FLOATING ANIMATION
+       Animasi lebah kecil yang terbang/mengambang
+       ============================================ */
+    .bee-container {
+      position: absolute;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .bee-1 {
+      top: 15%;
+      right: 10%;
+      /* ============================================
+         KECEPATAN GERAK LEBAH 1
+         Ubah durasi (6s) untuk mempercepat/memperlambat
+         Ubah range translateX/Y untuk jarak terbang
+         ============================================ */
+      animation: bee-float-1 6s ease-in-out infinite;
+    }
+
+    .bee-2 {
+      bottom: 20%;
+      left: 5%;
+      /* ============================================
+         KECEPATAN GERAK LEBAH 2
+         ============================================ */
+      animation: bee-float-2 8s ease-in-out infinite;
+    }
+
+    .bee-3 {
+      top: 40%;
+      right: -5%;
+      /* ============================================
+         KECEPATAN GERAK LEBAH 3
+         ============================================ */
+      animation: bee-float-3 7s ease-in-out infinite 1s;
+    }
+
+    /* ============================================
+       KEYFRAMES ANIMASI LEBAH
+       Ubah nilai translate untuk mengatur pola terbang
+       Ubah rotate untuk mengatur arah hadap lebah
+       ============================================ */
+    @keyframes bee-float-1 {
+      0%   { transform: translate(0, 0) rotate(0deg); }
+      25%  { transform: translate(-30px, -20px) rotate(-10deg); }
+      50%  { transform: translate(-10px, -35px) rotate(5deg); }
+      75%  { transform: translate(20px, -15px) rotate(-5deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    @keyframes bee-float-2 {
+      0%   { transform: translate(0, 0) rotate(0deg); }
+      25%  { transform: translate(25px, -15px) rotate(8deg); }
+      50%  { transform: translate(15px, -30px) rotate(-3deg); }
+      75%  { transform: translate(-20px, -10px) rotate(6deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    @keyframes bee-float-3 {
+      0%   { transform: translate(0, 0) rotate(0deg); }
+      33%  { transform: translate(-20px, 20px) rotate(-8deg); }
+      66%  { transform: translate(15px, 10px) rotate(5deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    /* Bee SVG styling */
+    .bee-svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    .bee-2 .bee-svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .bee-3 .bee-svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Wing flutter animation */
+    .bee-wing {
+      animation: wing-flutter 0.08s ease-in-out infinite alternate;
+      transform-origin: center bottom;
+    }
+
+    @keyframes wing-flutter {
+      0% { transform: scaleY(1); }
+      100% { transform: scaleY(0.6); }
+    }
+
+    /* ============================================
+       OPENING / ABOUT SECTION
+       ============================================ */
+    .opening {
+      padding: 100px 0;
+    }
+
+    .opening-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .opening-image {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .opening-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      object-position: center 80%;
+    }
+
+    .opening-image-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(255, 253, 247, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--brown-dark);
+      border: 1px solid rgba(255, 176, 0, 0.15);
+    }
+
+    .opening-content .section-subtitle {
+      margin-bottom: 24px;
+    }
+
+    .opening-features {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .opening-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .opening-feature-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: var(--cream);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .opening-feature-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--honey-dark);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .opening-feature-text {
+      font-size: 0.92rem;
+      color: var(--brown-medium);
+      line-height: 1.6;
+    }
+
+    .opening-feature-text strong {
+      color: var(--brown-dark);
+    }
+
+    /* ============================================
+       BENEFITS SECTION
+       ============================================ */
+    .benefits {
+      padding: 100px 0;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 48px;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      border: 1px solid rgba(255, 176, 0, 0.1);
+      border-radius: 20px;
+      padding: 36px 28px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--honey), var(--honey-light));
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-medium);
+      border-color: rgba(255, 176, 0, 0.25);
+    }
+
+    .benefit-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .benefit-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--cream);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      transition: all 0.35s;
+    }
+
+    .benefit-card:hover .benefit-icon {
+      background: var(--honey);
+    }
+
+    .benefit-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--honey-dark);
+      fill: none;
+      stroke-width: 1.8;
+      transition: stroke 0.35s;
+    }
+
+    .benefit-card:hover .benefit-icon svg {
+      stroke: var(--white);
+    }
+
+    .benefit-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--brown-dark);
+      margin-bottom: 10px;
+    }
+
+    .benefit-desc {
+      font-size: 0.88rem;
+      color: var(--brown-medium);
+      line-height: 1.65;
+    }
+
+    /* ============================================
+       WHY US SECTION
+       ============================================ */
+    .why-us {
+      padding: 100px 0;
+    }
+
+    .why-us-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .why-us-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .why-us-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 24px;
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 176, 0, 0.08);
+      transition: all 0.35s;
+    }
+
+    .why-us-item:hover {
+      border-color: rgba(255, 176, 0, 0.2);
+      box-shadow: var(--shadow-soft);
+      transform: translateX(6px);
+    }
+
+    .why-us-number {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--honey), var(--honey-dark));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--white);
+    }
+
+    .why-us-text h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--brown-dark);
+    }
+
+    .why-us-text p {
+      font-size: 0.85rem;
+      color: var(--brown-medium);
+      line-height: 1.6;
+    }
+
+    .why-us-visual {
+      position: relative;
+    }
+
+    .why-us-image {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .why-us-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+    }
+
+    .why-us-floating-badge {
+      position: absolute;
+      top: 24px;
+      right: -20px;
+      background: var(--white);
+      padding: 16px 24px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-medium);
+      text-align: center;
+      border: 1px solid rgba(255, 176, 0, 0.1);
+    }
+
+    .why-us-floating-badge .big-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--honey-dark);
+      line-height: 1;
+    }
+
+    .why-us-floating-badge .badge-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--brown-light);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ============================================
+       TESTIMONIALS SECTION
+       ============================================ */
+    .testimonials {
+      padding: 100px 0;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 48px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border: 1px solid rgba(255, 176, 0, 0.08);
+      border-radius: 20px;
+      padding: 32px 28px;
+      transition: all 0.35s;
+      position: relative;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-medium);
+      border-color: rgba(255, 176, 0, 0.2);
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+
+    .testimonial-stars svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--honey);
+    }
+
+    .testimonial-text {
+      font-size: 0.92rem;
+      color: var(--brown-medium);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--cream);
+    }
+
+    .testimonial-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--brown-dark);
+    }
+
+    .testimonial-location {
+      font-size: 0.76rem;
+      color: var(--brown-light);
+      margin-top: 2px;
+    }
+
+    /* ============================================
+       URGENCY SECTION
+       ============================================ */
+    .urgency {
+      padding: 80px 0;
+    }
+
+    .urgency-box {
+      background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-medium) 100%);
+      border-radius: 24px;
+      padding: 56px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .urgency-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='%23FFB000' stroke-width='0.6'/%3E%3Cpath d='M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34' fill='none' stroke='%23FFB000' stroke-width='0.4'/%3E%3C/svg%3E");
+      background-size: 56px 100px;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+
+    .urgency-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(255, 176, 0, 0.15);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .urgency-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--honey);
+      fill: none;
+      stroke-width: 1.8;
+    }
+
+    .urgency-title {
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+
+    .urgency-desc {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.75);
+      max-width: 580px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+    }
+
+    .urgency .btn-primary {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ============================================
+       BONUS SECTION
+       ============================================ */
+    .bonus {
+      padding: 80px 0;
+    }
+
+    .bonus-box {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 48px;
+      background: linear-gradient(135deg, var(--cream) 0%, #FFF3CC 100%);
+      border: 1px solid rgba(255, 176, 0, 0.15);
+      border-radius: 24px;
+      padding: 48px;
+      align-items: center;
+    }
+
+    .bonus-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bonus-image-frame {
+      width: 240px;
+      height: 240px;
+      background: var(--white);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-medium);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bonus-image-frame img {
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+    }
+
+    .bonus-tag {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #E53935;
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .bonus-content .section-title {
+      margin-bottom: 12px;
+    }
+
+    .bonus-desc {
+      font-size: 0.95rem;
+      color: var(--brown-medium);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .bonus-note {
+      font-size: 0.8rem;
+      color: var(--brown-light);
+      font-style: italic;
+    }
+
+    /* ============================================
+       CTA SECTION
+       ============================================ */
+    .cta-section {
+      padding: 100px 0;
+    }
+
+    .cta-box {
+      text-align: center;
+      position: relative;
+    }
+
+    .cta-title {
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      font-weight: 800;
+      color: var(--brown-dark);
+      margin-bottom: 16px;
+    }
+
+    .cta-title span {
+      color: var(--honey-dark);
+    }
+
+    .cta-desc {
+      font-size: 1.05rem;
+      color: var(--brown-medium);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ============================================
+       GUARANTEE SECTION
+       ============================================ */
+    .guarantee {
+      padding: 80px 0;
+    }
+
+    .guarantee-box {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 40px;
+      background: var(--white);
+      border: 2px solid var(--honey);
+      border-radius: 24px;
+      padding: 48px;
+      align-items: center;
+    }
+
+    .guarantee-seal {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, var(--honey), var(--honey-dark));
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      text-align: center;
+      box-shadow: var(--shadow-glow);
+      flex-shrink: 0;
+    }
+
+    .guarantee-seal-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .guarantee-seal-text {
+      font-size: 0.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 4px;
+      line-height: 1.3;
+    }
+
+    .guarantee-content .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .guarantee-content p {
+      font-size: 0.92rem;
+      color: var(--brown-medium);
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       NB / STORAGE NOTES SECTION
+       ============================================ */
+    .nb-section {
+      padding: 60px 0;
+    }
+
+    .nb-box {
+      background: var(--cream);
+      border-left: 4px solid var(--honey);
+      border-radius: 0 16px 16px 0;
+      padding: 28px 32px;
+    }
+
+    .nb-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--honey-dark);
+      margin-bottom: 10px;
+    }
+
+    .nb-text {
+      font-size: 0.9rem;
+      color: var(--brown-medium);
+      line-height: 1.75;
+    }
+
+    /* ============================================
+       LOCATION SECTION
+       ============================================ */
+    .location {
+      padding: 100px 0;
+    }
+
+    .location-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .location-map {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-medium);
+      height: 360px;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .location-map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .location-map-placeholder {
+      text-align: center;
+      color: var(--brown-light);
+    }
+
+    .location-map-placeholder svg {
+      width: 48px;
+      height: 48px;
+      stroke: var(--honey);
+      fill: none;
+      stroke-width: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .location-address {
+      margin: 20px 0 28px;
+      padding: 20px;
+      background: var(--cream);
+      border-radius: 12px;
+      font-size: 0.92rem;
+      color: var(--brown-medium);
+      line-height: 1.6;
+    }
+
+    .location-address strong {
+      color: var(--brown-dark);
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      background: var(--brown-dark);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 48px 0 28px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .footer-brand span {
+      color: var(--honey);
+    }
+
+    .footer-creator {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.82rem;
+    }
+
+    .footer-creator-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      object-fit: contain;
+      background: rgba(255, 255, 255, 0.1);
+      /* Placeholder untuk Logo Kampus */
+    }
+
+    .footer-creator-name {
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* ============================================
+       TOAST NOTIFICATION
+       ============================================ */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--brown-dark);
+      color: var(--white);
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      box-shadow: var(--shadow-medium);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 9999;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* ============================================
+       SCROLL REVEAL ANIMATION
+       ============================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================
+       RESPONSIVE DESIGN
+       ============================================ */
+    @media (max-width: 1024px) {
+      .hero-inner {
+        gap: 32px;
+      }
+
+      .droplet-frame {
+        width: 320px;
+        height: 400px;
+      }
+
+      .droplet-image-wrapper {
+        width: 250px;
+        height: 310px;
+      }
+
+      .opening-inner,
+      .why-us-inner,
+      .location-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .why-us-visual {
+        order: -1;
+      }
+
+      .why-us-floating-badge {
+        right: 12px;
+      }
+
+      .bonus-box {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .guarantee-box {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .guarantee-seal {
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-content {
+        padding-right: 0;
+        order: 2;
+      }
+
+      .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-stats {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        order: 1;
+      }
+
+      .droplet-frame {
+        width: 280px;
+        height: 350px;
+      }
+
+      .droplet-image-wrapper {
+        width: 220px;
+        height: 270px;
+      }
+
+      .hero-ring {
+        width: 340px;
+        height: 340px;
+      }
+
+      .hero-ring:nth-child(2) {
+        width: 400px;
+        height: 400px;
+      }
+
+      .benefits-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .bonus-box {
+        padding: 32px 24px;
+      }
+
+      .guarantee-box {
+        padding: 32px 24px;
+      }
+
+      .urgency-box {
+        padding: 40px 24px;
+      }
+
+      .location-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-stats {
+        gap: 24px;
+      }
+
+      .why-us-item {
+        padding: 18px;
+      }
+
+      .bonus-image-frame {
+        width: 180px;
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#" class="navbar-brand">Madu <span>Odeng</span> Asli</a>
+      <ul class="navbar-links">
+        <li><a href="#opening">Tentang</a></li>
+        <li><a href="#benefits">Manfaat</a></li>
+        <li><a href="#why-us">Keunggulan</a></li>
+        <li><a href="#testimonials">Testimoni</a></li>
+        <li><a href="#location">Lokasi</a></li>
+      </ul>
+      <a href="#cta" class="btn btn-primary nav-cta" style="padding: 10px 24px; font-size: 0.82rem;">Pesan Sekarang</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu navigasi">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose" aria-label="Tutup menu">&times;</button>
+    <a href="#opening" class="mobile-link">Tentang</a>
+    <a href="#benefits" class="mobile-link">Manfaat</a>
+    <a href="#why-us" class="mobile-link">Keunggulan</a>
+    <a href="#testimonials" class="mobile-link">Testimoni</a>
+    <a href="#location" class="mobile-link">Lokasi</a>
+    <a href="#cta" class="btn btn-primary mobile-link">Pesan Sekarang</a>
+  </div>
+
+  <!-- ============================================
+       HERO SECTION
+       ============================================ -->
+  <section class="hero honeycomb-bg" id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            Madu Hutan Liar 100% Murni
+          </div>
+          <h1 class="hero-title">
+            Kemurnian dari<br>Alam Liar untuk<br><span>Imunitas Tubuh</span> Anda
+          </h1>
+          <p class="hero-desc">
+            Rasakan khasiat madu hutan asli yang dipanen langsung dari sarang lebah liar di jantung hutan tropis Indonesia. Tanpa campuran, tanpa tambahan — sepenuhnya dari alam.
+          </p>
+          <div class="hero-buttons">
+            <a href="#cta" class="btn btn-primary">Pesan Madu Murni</a>
+            <a href="#opening" class="btn btn-outline">Pelajari Lebih Lanjut</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <div class="hero-stat-number">100%</div>
+              <div class="hero-stat-label">Madu Murni</div>
+            </div>
+            <div>
+              <div class="hero-stat-number">500+</div>
+              <div class="hero-stat-label">Pelanggan Puas</div>
+            </div>
+            <div>
+              <div class="hero-stat-number">10x</div>
+              <div class="hero-stat-label">Garansi Kembali</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <!-- Ring decorations -->
+          <div class="hero-ring"></div>
+          <div class="hero-ring"></div>
+
+          <!-- Droplet Shape Frame with Product Image -->
+          <div class="droplet-frame">
+            <div class="droplet-shape"></div>
+            <div class="droplet-glow"></div>
+            <div class="droplet-image-wrapper">
+              <img src="madu1.jpeg" alt="Produk Madu Odeng Asli">
+            </div>
+          </div>
+
+          <!-- ============================================
+               ANIMASI LEBAH KECIL
+               Ganti src di bawah dengan file Lottie/GIF
+               transparan lebah terbang, atau gunakan
+               SVG bawaan ini sebagai placeholder.
+               ============================================ -->
+          <div class="bee-container bee-1">
+            <svg class="bee-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="32" cy="36" rx="14" ry="12" fill="#FFB000"/>
+              <rect x="22" y="30" width="20" height="4" rx="2" fill="#3E2723" opacity="0.6"/>
+              <rect x="22" y="36" width="20" height="4" rx="2" fill="#3E2723" opacity="0.6"/>
+              <ellipse class="bee-wing" cx="24" cy="24" rx="10" ry="7" fill="rgba(255,255,255,0.6)" stroke="#FFB000" stroke-width="0.5"/>
+              <ellipse class="bee-wing" cx="38" cy="24" rx="10" ry="7" fill="rgba(255,255,255,0.6)" stroke="#FFB000" stroke-width="0.5"/>
+              <circle cx="44" cy="36" r="3" fill="#3E2723"/>
+              <circle cx="46" cy="35" r="1" fill="#fff"/>
+            </svg>
+          </div>
+
+          <div class="bee-container bee-2">
+            <svg class="bee-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="32" cy="36" rx="14" ry="12" fill="#FFB000"/>
+              <rect x="22" y="30" width="20" height="4" rx="2" fill="#3E2723" opacity="0.6"/>
+              <rect x="22" y="36" width="20" height="4" rx="2" fill="#3E2723" opacity="0.6"/>
+              <ellipse class="bee-wing" cx="24" cy="24" rx="10" ry="7" fill="rgba(255,255,255,0.6)" stroke="#FFB000" stroke-width="0.5"/>
+              <ellipse class="bee-wing" cx="38" cy="24" rx="10" ry="7" fill="rgba(255,255,255,0.6)" stroke="#FFB000" stroke-width="0.5"/>
+              <circle cx="44" cy="36" r="3" fill="#3E2723"/>
+              <circle cx="46" cy="35" r="1" fill="#fff"/>
+            </svg>
+          </div>
+
+          <div class="bee-container bee-3">
+            <svg class="bee-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="32" cy="36" rx="14" ry="12" fill="#FFB000"/>
+              <rect x="22" y="30" width="20" height="4" rx="2" fill="#3E2723" opacity="0.6"/>
+              <rect x="22" y="36" width="20" height="4" rx="2" fill="#3E2723" opacity="0.6"/>
+              <ellipse class="bee-wing" cx="24" cy="24" rx="10" ry="7" fill="rgba(255,255,255,0.6)" stroke="#FFB000" stroke-width="0.5"/>
+              <ellipse class="bee-wing" cx="38" cy="24" rx="10" ry="7" fill="rgba(255,255,255,0.6)" stroke="#FFB000" stroke-width="0.5"/>
+              <circle cx="44" cy="36" r="3" fill="#3E2723"/>
+              <circle cx="46" cy="35" r="1" fill="#fff"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       OPENING SECTION
+       ============================================ -->
+  <section class="opening honeycomb-bg" id="opening">
+    <div class="container">
+      <div class="opening-inner reveal">
+        <div class="opening-image">
+          <img src="madu2.jpeg" alt="Hutan lebah liar madu odeng">
+          <div class="opening-image-badge">Apis dorsata — Lebah Liar Hutan</div>
+        </div>
+        <div class="opening-content">
+          <span class="section-label">Tentang Produk</span>
+          <h2 class="section-title">Madu Hutan Murni dari<br>Jantung Alam Liar Indonesia</h2>
+          <p class="section-subtitle">
+            Madu Odeng Asli adalah madu hutan murni yang dihasilkan oleh lebah liar Apis dorsata yang bersarang di dahan pohon tinggi, seperti di pedalaman hutan Ujung Kulon dan Baduy. Setiap tetesnya mengandung kemurnian alam yang tak tergantikan.
+          </p>
+          <div class="opening-features">
+            <div class="opening-feature">
+              <div class="opening-feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="opening-feature-text">
+                <strong>Dipanen Secara Tradisional</strong> — Para petani madu lokal memanen langsung dari sarang lebah liar tanpa merusak koloni.
+              </div>
+            </div>
+            <div class="opening-feature">
+              <div class="opening-feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              </div>
+              <div class="opening-feature-text">
+                <strong>Tanpa Proses Pemanasan</strong> — Madu dikemas dalam keadaan mentah (raw honey) agar nutrisi tetap sempurna.
+              </div>
+            </div>
+            <div class="opening-feature">
+              <div class="opening-feature-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <div class="opening-feature-text">
+                <strong>Langsung dari Hutan</strong> — Tidak melalui rantai distribusi panjang sehingga kesegaran terjaga maksimal.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       BENEFITS SECTION
+       ============================================ -->
+  <section class="benefits" id="benefits">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Khasiat Utama</span>
+        <h2 class="section-title">Manfaat Madu Odeng Asli untuk Kesehatan Anda</h2>
+        <p class="section-subtitle mx-auto">
+          Setiap tetes madu hutan liar mengandung senyawa alami yang telah terbukti secara ilmiah mendukung kesehatan tubuh secara menyeluruh.
+        </p>
+      </div>
+      <div class="benefits-grid reveal">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22c4-4 8-7.5 8-12a8 8 0 10-16 0c0 4.5 4 8 8 12z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3 class="benefit-title">Kaya Antioksidan</h3>
+          <p class="benefit-desc">Mengandung flavonoid dan asam fenolik yang membantu menetralisir radikal bebas, melindungi sel-sel tubuh dari kerusakan oksidatif, dan memperlambat proses penuaan dini.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="benefit-title">Bersifat Antibakteri Alami</h3>
+          <p class="benefit-desc">Mengandung hidrogen peroksida dan methylglyoxal alami yang efektif menghambat pertumbuhan bakteri berbahaya, membantu penyembuhan luka, dan menjaga kesehatan saluran pencernaan.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <h3 class="benefit-title">Menjaga Imunitas Tubuh</h3>
+          <p class="benefit-desc">Kombinasi enzim, vitamin, mineral, dan senyawa antibakteri bekerja sinergis memperkuat sistem pertahanan tubuh, meningkatkan stamina, dan mempercepat pemulihan saat sakit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       WHY US SECTION
+       ============================================ -->
+  <section class="why-us honeycomb-bg" id="why-us">
+    <div class="container">
+      <div class="why-us-inner reveal">
+        <div>
+          <span class="section-label">Mengapa Kami</span>
+          <h2 class="section-title">Mengapa Harus Madu Odeng Asli?</h2>
+          <p class="section-subtitle" style="margin-bottom: 32px;">
+            Banyak madu palsu beredar di pasaran. Madu Odeng Asli hadir sebagai jaminan kemurnian yang bisa Anda percaya.
+          </p>
+          <div class="why-us-list">
+            <div class="why-us-item">
+              <div class="why-us-number">1</div>
+              <div class="why-us-text">
+                <h4>100% Madu Liar Alami</h4>
+                <p>Dihasilkan langsung oleh lebah liar Apis dorsata di habitat hutan aslinya. Bukan madu budidaya yang diberi pakan gula.</p>
+              </div>
+            </div>
+            <div class="why-us-item">
+              <div class="why-us-number">2</div>
+              <div class="why-us-text">
+                <h4>Tanpa Campuran Gula</h4>
+                <p>Tidak ditambahkan gula pasir, fruktosa sintetis, ataupun bahan pengawet buatan apa pun. Murni madu seutuhnya.</p>
+              </div>
+            </div>
+            <div class="why-us-item">
+              <div class="why-us-number">3</div>
+              <div class="why-us-text">
+                <h4>Dipanen Langsung Secara Tradisional</h4>
+                <p>Para petani madu lokal memanen dengan metode warisan nenek moyang yang menjaga keberlanjutan koloni lebah dan keseimbangan ekosistem hutan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="why-us-visual">
+          <div class="why-us-image">
+            <img src="madu3.jpeg" alt="Panen madu hutan secara tradisional">
+          </div>
+          <div class="why-us-floating-badge">
+            <div class="big-number">30+</div>
+            <div class="badge-label">Tahun Pengalaman</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       TESTIMONIALS SECTION
+       ============================================ -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Testimoni</span>
+        <h2 class="section-title">Apa Kata Mereka yang Sudah Merasakan</h2>
+        <p class="section-subtitle mx-auto">
+          Dengarkan pengalaman nyata dari pelanggan yang telah merasakan manfaat kesehatan dari Madu Odeng Asli.
+        </p>
+      </div>
+      <div class="testimonials-grid reveal">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"Selesai minum Madu Odeng setiap pagi selama dua bulan, daya tahan tubuh saya terasa jauh lebih baik. Biasanya mudah sakit saat musim hujan, sekarang jarang sekali. Rasanya juga beda, benar-benar khas madu hutan."</p>
+          <div class="testimonial-author">
+            <img src="https://picsum.photos/seed/person-bu-rina/96/96.jpg" alt="Foto Ibu Rina" class="testimonial-avatar">
+            <div>
+              <div class="testimonial-name">Ibu Rina Susanti</div>
+              <div class="testimonial-location">Serang, Banten</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"Anak saya yang tadinya susah makan, sekarang jadi lebih nafsu makan setelah rutin dikasih Madu Odeng. Saya juga merasakan tenggorokan lebih nyaman dan tidak mudah lelah. Benar-benar madu berkualitas."</p>
+          <div class="testimonial-author">
+            <img src="https://picsum.photos/seed/person-pak-dedi/96/96.jpg" alt="Foto Pak Dedi" class="testimonial-avatar">
+            <div>
+              <div class="testimonial-name">Bapak Dedi Kurniawan</div>
+              <div class="testimonial-location">Pandeglang, Banten</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"Saya sudah mencoba banyak madu di pasaran, tapi Madu Odeng benar-benar berbeda. Teksturnya kental, aromanya wangi khas hutan, dan saat diuji tidak mengandung gula tambahan. Sangat recommended."</p>
+          <div class="testimonial-author">
+            <img src="https://picsum.photos/seed/person-ibu-sari/96/96.jpg" alt="Foto Ibu Sari" class="testimonial-avatar">
+            <div>
+              <div class="testimonial-name">Ibu Sari Wulandari</div>
+              <div class="testimonial-location">Rangkasbitung, Lebak</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       URGENCY SECTION
+       ============================================ -->
+  <section class="urgency" id="urgency">
+    <div class="container">
+      <div class="urgency-box reveal">
+        <div class="urgency-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        </div>
+        <h2 class="urgency-title">Stok Madu Hutan Liar Sangat Terbatas</h2>
+        <p class="urgency-desc">
+          Madu Odeng Asli dipanen langsung dari hutan liar yang tergantung sepenuhnya pada musim panen alami. Kami tidak bisa memproduksi madu secara massal. Ketika stok habis, Anda harus menunggu hingga musim panen berikutnya tiba.
+        </p>
+        <a href="#cta" class="btn btn-primary">Cek Ketersediaan Stok</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+     BONUS SECTION (GANTI BAGIAN LAMA DENGAN INI)
+     ============================================ -->
+    <section class="bonus" id="bonus">
+    <div class="container">
+        <div class="bonus-box reveal">
+        <div class="bonus-visual">
+            <div class="bonus-image-frame" style="border-radius: 50%; width: 200px; height: 200px;">
+            <!-- Ikon/Ilustrasi Konsultasi/Chat -->
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#FFB000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                <circle cx="9" cy="10" r="1" fill="#FFB000"></circle>
+                <circle cx="12" cy="10" r="1" fill="#FFB000"></circle>
+                <circle cx="15" cy="10" r="1" fill="#FFB000"></circle>
+            </svg>
+            </div>
+        </div>
+        <div class="bonus-content">
+            <span class="section-label">Nilai Tambah</span>
+            <h2 class="section-title">Konsultasi Gratis Cara Konsumsi yang Tepat</h2>
+            <p class="bonus-desc">
+            Setiap pembelian Madu Odeng Asli dilengkapi dengan konsultasi gratis via WhatsApp mengenai cara konsumsi madu yang tepat sesuai kebutuhan kesehatan Anda dan keluarga. Kami akan membantu memberikan panduan dosis serta waktu terbaik agar khasiat madu terserap secara optimal.
+            </p>
+            <p class="bonus-note">*Layanan konsultasi berlaku untuk seluruh varian dan ukuran pembelian Madu Odeng Asli.</p>
+        </div>
+        </div>
+    </div>
+    </section>
+
+  <!-- ============================================
+       CTA SECTION
+       ============================================ -->
+  <section class="cta-section honeycomb-bg" id="cta">
+    <div class="container">
+      <div class="cta-box reveal">
+        <span class="section-label">Pesan Sekarang</span>
+        <h2 class="cta-title">Siap Merasakan <span>Kemurnian Madu Hutan?</span></h2>
+        <p class="cta-desc">
+          Jangan tunda lagi. Hubungi kami sekarang melalui WhatsApp untuk memesan Madu Odeng Asli langsung ke rumah Anda. Proses mudah, pengiriman cepat, dan garansi keaslian 100%.
+        </p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/6285797149308?text=Halo%2C%20saya%20ingin%20memesan%20Madu%20Odeng%20Asli" target="_blank" rel="noopener noreferrer" class="btn btn-wa">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pesan Madu Murni Sekarang
+          </a>
+          <a href="#guarantee" class="btn btn-outline">Lihat Garansi</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       GUARANTEE SECTION
+       ============================================ -->
+  <section class="guarantee" id="guarantee">
+    <div class="container">
+      <div class="guarantee-box reveal">
+        <div class="guarantee-seal">
+          <div class="guarantee-seal-number">10x</div>
+          <div class="guarantee-seal-text">Garansi<br>Kembali</div>
+        </div>
+        <div class="guarantee-content">
+          <h2 class="section-title">Garansi Keaslian 100%</h2>
+          <p>
+            Kami menjamin setiap botol Madu Odeng Asli adalah madu hutan murni tanpa campuran. Jika terbukti bahwa produk kami merupakan madu palsu atau mengandung campuran gula dan bahan buatan, kami bersedia mengembalikan uang Anda sebesar 10 kali lipat dari harga pembelian. Itulah seberapa percaya diri kami dengan kemurnian produk ini.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       NB / STORAGE NOTES SECTION
+       ============================================ -->
+  <section class="nb-section" id="nb">
+    <div class="container">
+      <div class="nb-box reveal">
+        <div class="nb-title">Nota Bene — Cara Penyimpanan Madu</div>
+        <p class="nb-text">
+          Simpan madu di tempat sejuk dan kering, jauh dari paparan sinar matahari langsung. Pastikan botol selalu tertutup rapat setelah digunakan untuk mencegah madu menyerap kelembapan dari udara. Jangan menyimpan madu menggunakan sendok atau alat dari logam karena dapat memicu reaksi oksidasi yang menurunkan kualitas madu. Gunakan sendok kayu atau plastik sebagai gantinya. Madu yang disimpan dengan benar tidak memiliki tanggal kadaluarsa dan dapat bertahan bertahun-tahun tanpa kehilangan khasiatnya.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       LOCATION SECTION
+       ============================================ -->
+  <section class="location" id="location">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Lokasi Kami</span>
+        <h2 class="section-title">Temukan Kami di Gunungcupu</h2>
+        <p class="section-subtitle mx-auto">
+          Kunjungi lokasi kami langsung untuk melihat dan membuktikan sendiri kemurnian Madu Odeng Asli.
+        </p>
+      </div>
+      <div class="location-inner reveal" style="margin-top: 40px;">
+        <div class="location-map">
+          <!-- Ganti src iframe di bawah dengan embed Google Maps lokasi sebenarnya -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15865.5!2d106.1!3d-6.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMzAnMDAuMCJTIDEwNsKwMDYnMDAuMCJF!5e0!3m2!1sid!2sid!4v1"
+            width="100%"
+            height="360"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Lokasi Madu Odeng Asli">
+          </iframe>
+        </div>
+        <div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 8px; color: var(--brown-dark);">Alamat</h3>
+          <div class="location-address">
+            <strong>Madu Odeng Asli</strong><br>
+            Gunungcupu, Jalan Budiasih<br>
+            Kecamatan Cimanggu<br>
+            Kabupaten Pandeglang, Banten
+          </div>
+          <a href="https://www.google.com/maps/search/Gunungcupu+Jalan+Budiasih+Pandeglang+Banten" target="_blank" rel="noopener noreferrer" class="btn btn-maps">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Lihat Lokasi via Google Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">Madu <span>Odeng</span> Asli</div>
+        <div class="footer-creator">
+          <!-- Placeholder Logo Kampus — ganti src dengan logo kampus sebenarnya -->
+          <img src="https://pmb.stmik-dci.ac.id/wp-content/uploads/2021/07/1.png" alt="Logo Kampus" class="footer-creator-img">
+          <div>
+            <div class="footer-creator-name">Hilal Arya Wijaya</div>
+            <div style="font-size: 0.72rem; color: rgba(255,255,255,0.4);">Pembuat &amp; Pengembang</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2025 Madu Odeng Asli. Seluruh hak cipta dilindungi undang-undang.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ============================================
+       JAVASCRIPT
+       ============================================ -->
+  <script>
+    // ---- Navbar scroll shadow ----
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ---- Mobile menu ----
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+
+    hamburgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    function closeMenu() {
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    mobileClose.addEventListener('click', closeMenu);
+    mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+    // ---- Scroll Reveal ----
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // ---- Smooth scroll for anchor links ----
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ---- Toast notification helper ----
+    function showToast(message, duration = 3000) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), duration);
+    }
+
+    // ---- CTA WhatsApp button feedback ----
+    const waBtn = document.querySelector('.btn-wa');
+    if (waBtn) {
+      waBtn.addEventListener('click', function(e) {
+        // Jika ingin menampilkan toast sebelum redirect:
+        showToast('Mengarahkan ke WhatsApp...');
+      });
+    }
+  </script>
+</body>
+</html>
